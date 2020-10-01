@@ -33,11 +33,29 @@ public class MainActivity extends AppCompatActivity{
         View.OnClickListener oclBtn = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (numOne.getText().toString().equals(""))
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Ошибка: введите число", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+                if (numTwo.getText().toString().equals("")){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Ошибка: введите число", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
                 int min = Integer.parseInt(numOne.getText().toString());
                 int max = Integer.parseInt(numTwo.getText().toString());
-             /*   if (max < min){
-                    Toast.makeText(this, "Пошёл нахуй", Toast.LENGTH_LONG).show();
-                }*/
+
+                if (min > max){
+                   Toast toast = Toast.makeText(getApplicationContext(),
+                           "Ошибка: неправильно задан диапазон", Toast.LENGTH_SHORT);
+                   toast.show();
+                   return;
+                }
                 int diff = max - min;
                 Random random = new Random();
                 int i = random.nextInt(diff+1) + min;
